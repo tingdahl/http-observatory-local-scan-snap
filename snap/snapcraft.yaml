@@ -25,3 +25,10 @@ apps:
     command: bin/httpobs-local-scan 
     plugs:
       - network
+
+# Disable PowerPC (does not build)
+architectures:
+  - amd64
+  - arm64
+  - armhf
+  - s390x
