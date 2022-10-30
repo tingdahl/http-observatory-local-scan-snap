@@ -2,11 +2,11 @@
 # Licensed under the Mozilla public license 2.0
 
 name: tingdahl-observatory-http
-title: Observatory-http
+title: Observatory http cli scanner
 license: MPL-2.0
-website: https://github.com/mozilla/http-observatory
+website: https://github.com/tingdahl/http-observatory-local-scan
 base: core22 # the base snap is the execution environment for this snap
-summary: Score your site's HTTPS practices
+summary: Score your site's HTTPS practices from a CLI scanner
 version: git
 description: |
   Mozilla Observatory scans websites for security issues. This is the cli
@@ -15,12 +15,9 @@ description: |
 grade: devel # must be 'stable' to release into candidate/stable channels
 confinement: strict # use 'strict' once you have the right plugs and slots
 
-
-
 parts:
   httpobs-local-scan :
     plugin: python
-      #source: https://github.com/tingdahl/http-observatory-snap.git
     source: .
 
 apps:
