@@ -5,15 +5,15 @@ name: tingdahl-observatory-http-cli-scanner
 title: Observatory http cli scanner
 license: MPL-2.0
 website: https://github.com/tingdahl/http-observatory-local-scan
-base: core22 # the base snap is the execution environment for this snap
+base: core22 
 summary: Score your site's HTTPS practices from a CLI scanner
 version: git
 description: |
   Mozilla Observatory scans websites for security issues. This is the cli
   version of observability that allows CI/CD tooling to test websites
   as a part of the build and release process.
-grade: devel # must be 'stable' to release into candidate/stable channels
-confinement: strict # use 'strict' once you have the right plugs and slots
+grade: stable
+confinement: strict
 
 parts:
   httpobs-local-scan :
