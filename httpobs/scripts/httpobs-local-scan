@@ -58,7 +58,7 @@ if __name__ == "__main__":
 
     args = vars(parser.parse_args())
 
-    # Remove the -- from the name, change - o underscore
+    # Remove the -- from the name, change - to underscore
     args = {k.split('--')[-1].replace('-', '_'): v for k, v in args.items()}
     output_format = args.pop('format').lower()
 
@@ -92,12 +92,52 @@ if __name__ == "__main__":
     # Get the scan results
     r = httpobs.scanner.local.scan(**args)
 
+    # Compare score to threshold
+    thresholding_results = {'min-score': min_score }
+    score_thresholding_text = ''
+    score = r['scan']['score']
+    score_thresholding_passed = score>=min_score
+
+    if score_thresholding_passed:
+        score_thresholding_text = f'Score thresholding passed as score ({score}) is higher or queal to min-score ({min_score}).'
+    else:
+        score_thresholding_text = f'Score thresholding failed as score ({score}) is lower than the minimum score ({min_score}).'
+
+    thresholding_results['score-test-text'] = score_thresholding_text
+    thresholding_results['score-test-passed'] = score_thresholding_passed
+
+    # Compare grade to threshold
+    thresholding_results['min-grade'] = min_grade
+    grade_thresholding_text = ''
+    grade = r['scan']['grade']
+    grade_index = GRADES.index(grade)
+    min_grade_index = GRADES.index(min_grade)
+    grade_thresholding_passed = grade_index>=min_grade_index
+
+    if grade_thresholding_passed:
+        grade_thresholding_text = \
+            f'Grade thresholding passed as grade ({grade}) is higher or queal to min-grade ({min_grade})'
+    else:
+        grade_thresholding_text = \
+            f'Grade thresholding failed as grade ({grade}) is lower than the minimum grade ({min_grade})'
+
+    thresholding_results['grade-test-text'] = grade_thresholding_text
+    thresholding_results['grade-test-passed'] = grade_thresholding_passed
+
+    #Integrate the results
+    thresholding_passed = score_thresholding_passed and grade_thresholding_passed
+    thresholding_results['passed'] = thresholding_passed
+
+    #Integrate thresholding results with results
+    r['thresholding-results'] = thresholding_results
+
     # print out the results to the command line
     if output_format == 'json':
         print(json.dumps(r, indent=4, sort_keys=True))
     elif output_format == 'report':
-        print('Score: {0} [{1}]'.format(r['scan']['score'],
-                                        r['scan']['grade']))
+        print('Score: {0} [{1}]'.format(score, grade))
+        print(f'Score threshold: {score_thresholding_text}')
+        print(f'Grade threshold: {grade_thresholding_text}')
 
         print('Modifiers:')
 
@@ -113,20 +153,7 @@ if __name__ == "__main__":
                                                                   modifier=score[1],
                                                                   reason=score[2]))
 
-    # Check for minimum score
-    score = r['scan']['score']
-    if score<min_score:
-        print(f"Test failed as score ({score}) is lower than the minimum score ({min_score}).")
+    if thresholding_passed==False:
         exit(1)
-
-    #Check for minimum grade
-    grade = r['scan']['grade']
-    grade_index = GRADES.index(grade)
-    min_grade_index = GRADES.index(min_grade)
-    if grade_index<min_grade_index:
-        print(f"Test failed as grade ({grade}) is lower than the minimum grade ({min_grade}).")
-        exit(1)
-
-    
 
 
