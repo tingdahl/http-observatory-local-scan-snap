@@ -1,7 +1,7 @@
 # Copyright (C) 2022 - : Kristofer Tingdahl
 # Licensed under the Mozilla public license 2.0
 
-name: tingdahl-observatory-http
+name: tingdahl-observatory-http-cli-scanner
 title: Observatory http cli scanner
 license: MPL-2.0
 website: https://github.com/tingdahl/http-observatory-local-scan
