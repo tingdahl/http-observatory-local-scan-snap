@@ -117,9 +117,9 @@ if __name__ == "__main__":
     score_thresholding_passed = score>=min_score
 
     if score_thresholding_passed:
-        score_thresholding_text = f'Score thresholding passed as score ({score}) is higher or equal to min-score ({min_score}).'
+        score_thresholding_text = f'Score thresholding passed as score ({score}) is higher or equal to min-score ({min_score})'
     else:
-        score_thresholding_text = f'Score thresholding failed as score ({score}) is lower than the minimum score ({min_score}).'
+        score_thresholding_text = f'Score thresholding failed as score ({score}) is lower than the minimum score ({min_score})'
 
     thresholding_results['score-test-text'] = score_thresholding_text
     thresholding_results['score-test-passed'] = score_thresholding_passed
