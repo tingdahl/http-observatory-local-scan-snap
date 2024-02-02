@@ -1,14 +1,14 @@
 #!/bin/bash
 
-#Add upstream remote and fetch master
-if ! git remote add -t master -f upstream https://github.com/mozilla/http-observatory.git; then
+#Add upstream remote and fetch upstream/main
+if ! git remote add -t main -f upstream https://github.com/mozilla/http-observatory.git; then
     echo "Adding upstream remote failed"
     exit(1)
 fi
 
 #Attempt to merge
-if ! git merge upstream/master; then
-    echo "Merge upstream/master failed. Restoring state"
+if ! git merge upstream/main; then
+    echo "Merge upstream/main failed. Restoring state"
     git merge --abort
     git remote remove upstream
     exit(1)
