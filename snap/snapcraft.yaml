@@ -14,6 +14,12 @@ description: |
   as a part of the build and release process.
 grade: stable
 confinement: strict
+platforms:
+  amd64:
+  arm64:
+  ppc64el:
+  s390x:
+  armhf:
 
 parts:
   httpobs-local-scan :
