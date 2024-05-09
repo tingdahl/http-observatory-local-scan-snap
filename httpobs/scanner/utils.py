@@ -3,7 +3,6 @@ import os.path
 import sys
 
 import requests
-from bs4 import BeautifulSoup as bs
 from requests.structures import CaseInsensitiveDict
 
 from httpobs.conf import SCANNER_PINNED_DOMAINS

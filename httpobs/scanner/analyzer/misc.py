@@ -1,7 +1,5 @@
 from urllib.parse import urlparse
 
-from bs4 import BeautifulSoup as bs
-
 from httpobs.scanner.analyzer.decorators import scored_test
 from httpobs.scanner.analyzer.utils import is_hsts_preloaded
 
