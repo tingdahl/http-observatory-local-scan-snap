@@ -4,14 +4,16 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+
         {
             "name": "httpobs-local-scan",
-            "type": "python",
+            "type": "debugpy",
             "request": "launch",
             "console": "integratedTerminal",
             "justMyCode": true,
             "program": "${workspaceFolder}/httpobs/scripts/httpobs-local-scan",
-            "args": ["--min-score", "100", "ubuntu.com"]
+            "args": ["--min-score", "100", "ubuntu.com"],
+            "env": {"PYTHONPATH": "${workspaceFolder}${pathSeparator}${env:PYTHONPATH}"}
         }
     ]
 }
