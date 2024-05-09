@@ -42,8 +42,6 @@ setup(
         'publicsuffixlist',
         'requests'
     ],
-    scripts=['httpobs/scripts/httpobs-local-scan',
-             'httpobs/scripts/httpobs-mass-scan',
-             'httpobs/scripts/httpobs-scan-worker'],
+    scripts=['httpobs/scripts/httpobs-local-scan'],
     zip_safe=False,
 )

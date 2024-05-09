@@ -7,9 +7,7 @@ authors = ["April King <april@mozilla.com>"]
 maintainers = ["Leo McArdle <leo@mozilla.com>"]
 
 [tool.poetry.scripts]
-httpobs-local-scan = 'httpobs.scripts.scan:main'
-httpobs-server = "httpobs.website.main:run"
-httpobs-regen-hsts-preload = "httpobs.scanner.utils:retrieve_store_hsts_preload_list"
+httpobs-local-scan = 'httpobs.scripts.localscan:main'
 
 [tool.poetry.dependencies]
 python = "^3.11"

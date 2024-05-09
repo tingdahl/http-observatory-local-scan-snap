@@ -1,4 +1,4 @@
-SOURCE_URL = 'https://github.com/mozilla/http-observatory'
+SOURCE_URL = 'https://github.com/tingdahl/http-observatory-local-scan'
 VERSION = '0.9.3'
 
 # The various statuses
