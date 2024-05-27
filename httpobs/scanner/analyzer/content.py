@@ -1,9 +1,6 @@
 import json
 from urllib.parse import urlparse
 
-from bs4 import BeautifulSoup as bs
-from publicsuffixlist import PublicSuffixList
-
 from httpobs.conf import SCANNER_MOZILLA_DOMAINS
 from httpobs.scanner.analyzer.decorators import scored_test
 from httpobs.scanner.analyzer.utils import only_if_worse

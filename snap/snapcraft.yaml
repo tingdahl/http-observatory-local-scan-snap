@@ -5,7 +5,7 @@ name: tingdahl-observatory-http-cli-scanner
 title: Observatory http cli scanner
 license: MPL-2.0
 website: https://github.com/tingdahl/http-observatory-local-scan
-base: core22 
+base: core24 
 summary: Score your site's HTTPS practices from a CLI scanner
 version: git
 description: |
@@ -19,6 +19,8 @@ parts:
   httpobs-local-scan :
     plugin: python
     source: .
+    build-packages:
+      - git
 
 apps:
   httpobs-local-scan :

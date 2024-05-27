@@ -18,7 +18,8 @@ FORMAT_REPORT_KEY = 'report'
 RESULT_SCAN_KEY = 'scan'
 RESULT_ERROR_KEY = 'error'
 
-if __name__ == "__main__":
+def main():
+
     parser = argparse.ArgumentParser()
 
     # Add the various arguments
@@ -185,3 +186,5 @@ if __name__ == "__main__":
         exit(1)
 
 
+if __name__ == "__main__":
+    main()
