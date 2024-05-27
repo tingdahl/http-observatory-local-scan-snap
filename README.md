@@ -1,4 +1,4 @@
-# Mozilla HTTP Observatory - CLI Scanner
+# Standalone Mozilla HTTP Observatory - CLI Scanner
 ## Score your site's HTTPS practices from a lightweight CLI
 
 
@@ -9,9 +9,9 @@ This is a subset of Mozilla's which focuses on CLI scanning of a website without
 Mozilla's CLI package (https://github.com/mozilla/observatory-cli) does not perform its own scanning. It asks Mozilla's server to scan your site, and returns the (cached) results.
 
 ## Scanning a site 
-To scan a site, use the httpobs-local-scan
+To scan a site, use the observatory-scanner
 ```bash
-$ httpobs-local-scan mozilla.org
+$ observatory-scanner
 ```   
 See the --help option for all options.
 
@@ -24,11 +24,11 @@ If you are handy with python, you should be able to make a local install by
 
 ```bash
 # Install the HTTP Observatory - CLI Scanner
-$ git clone https://github.com/tingdahl/http-observatory-local-scan.git
+$ git clone https://github.com/tingdahl/observatory-scanner.git
 $ cd http-observatory-local-scan
 $ pip3 install --upgrade .
 ```
-Build is maintained on recent Ubuntu (22.04)
+Build is maintained on recent Ubuntu (24.04)
 
 ## Updates
-This softare is a clone and simplify version of the upstream project. All copyright of the upstream project belongs there. It is the intention to be up to date with the scoring methodology of the upstream process.
+This softare is a clone and simplified version of the upstream project. All copyright of the upstream project belongs there. It is the intention to be up to date with the scoring methodology of the upstream process.
