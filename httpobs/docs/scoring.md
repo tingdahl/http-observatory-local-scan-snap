@@ -72,17 +72,6 @@ csp-not-implemented | Content Security Policy (CSP) header not implemented | -25
 csp-header-invalid | Content Security Policy (CSP) header cannot be parsed successfully | -25
 <br>
 
-[HTTP Public Key Pinning](https://infosec.mozilla.org/guidelines/web_security#http-public-key-pinning) | Description | Modifier
---- | --- | :---:
-hpkp-preloaded | Preloaded via the HTTP Public Key Pinning (HPKP) preloading process | 0
-hpkp-implemented-<br>max-age-at-least-fifteen-days | HTTP Public Key Pinning (HPKP) header set to a minimum of 15 days (1296000) | 0
-hpkp-implemented-<br>max-age-less-than-fifteen-days | HTTP Public Key Pinning (HPKP) header set to less than 15 days (1296000) | 0
-hpkp-not-implemented | HTTP Public Key Pinning (HPKP) header not implemented | 0
-hpkp-invalid-cert | HTTP Public Key Pinning (HPKP) header cannot be set, as site contains an invalid certificate chain | 0
-hpkp-not-implemented-no-https | HTTP Public Key Pinning (HPKP) header can't be implemented without https | 0
-hpkp-header-invalid | HTTP Public Key Pinning (HPKP) header cannot be recognized | -5
-<br>
-
 [HTTP Strict Transport Security](https://infosec.mozilla.org/guidelines/web_security#http-strict-transport-security) | Description | Modifier
 --- | --- | :---:
 hsts-preloaded | Preloaded via the HTTP Strict Transport Security (HSTS) preloading process | 5
@@ -147,9 +136,8 @@ x-frame-options-header-invalid | `X-Frame-Options` (XFO) header cannot be recogn
 
 [X-XSS-Protection](https://infosec.mozilla.org/guidelines/web_security#x-xss-protection) | Description | Modifier
 --- | --- | :---:
-x-xss-protection-not-needed-due-to-csp | `X-XSS-Protection` header not needed due to strong Content Security Policy (CSP) header | 0
 x-xss-protection-enabled-mode-block | `X-XSS-Protection` header set to `1; mode=block` | 0
 x-xss-protection-enabled | `X-XSS-Protection` header set to `1` | 0
-x-xss-protection-disabled | `X-XSS-Protection` header set to `0` (disabled) | -10
-x-xss-protection-not-implemented | `X-XSS-Protection` header not implemented | -10
-x-xss-protection-header-invalid | `X-XSS-Protection` header cannot be recognized | -10
+x-xss-protection-disabled | `X-XSS-Protection` header set to `0` (disabled) | 0
+x-xss-protection-not-implemented | `X-XSS-Protection` header not implemented | 0
+x-xss-protection-header-invalid | `X-XSS-Protection` header cannot be recognized | -5
