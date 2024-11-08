@@ -12,11 +12,13 @@ NO_MIN_GRADE = ''
 NO_MIN_SCORE = 0
 GRADES = ['F', 'D-', 'D', 'D+', 'C-', 'C', 'C+', 'B-', 'B', 'B+', 'A-', 'A', 'A+']
 
-#All keys used more than once
+#
+# All keys used more than once
 FORMAT_JSON_KEY = 'json'
 FORMAT_REPORT_KEY = 'report'
 RESULT_SCAN_KEY = 'scan'
 RESULT_ERROR_KEY = 'error'
+
 
 def main():
 
@@ -74,7 +76,7 @@ def main():
     min_score = args.pop('min_score')
 
     # print out help if no arguments are specified, or bad arguments
-    if len(args) == 0 or output_format not in ('json', 'report') or min_score<NO_MIN_SCORE:
+    if len(args) == 0 or output_format not in ('json', 'report') or min_score < NO_MIN_SCORE:
         parser.print_help()
         parser.exit(-1)
 
@@ -88,7 +90,7 @@ def main():
 
     # Because it makes sense this way
     if args['http_port'] == 80:
-        del(args['http_port'])
+        del (args['http_port'])
 
     if args['https_port'] == 443:
         del (args['https_port'])
@@ -99,11 +101,10 @@ def main():
     # Get the scan results
     r = httpobs.scanner.local.scan(**args)
 
-
     if RESULT_SCAN_KEY not in r.keys():
-        if output_format==FORMAT_JSON_KEY:
+        if output_format == FORMAT_JSON_KEY:
             print(json.dumps(r, indent=4, sort_keys=True))
-        elif output_format==FORMAT_REPORT_KEY and RESULT_ERROR_KEY in r.keys():
+        elif output_format == FORMAT_REPORT_KEY and RESULT_ERROR_KEY in r.keys():
             print(f'Error: {r[RESULT_ERROR_KEY]}')
         else:
             print('Unknown error')
@@ -116,12 +117,14 @@ def main():
     thresholding_results = {}
     thresholding_passed = True
 
+    grade = r[RESULT_SCAN_KEY]['grade']
+
     # Compare score to threshold
-    if min_score>NO_MIN_SCORE:
+    if min_score > NO_MIN_SCORE:
         thresholding_results['min-score'] = min_score
-        
+
         score = r[RESULT_SCAN_KEY]['score']
-        score_thresholding_passed = score>=min_score
+        score_thresholding_passed = score >= min_score
 
         if score_thresholding_passed:
             score_thresholding_text = f'Score thresholding passed as score ({score}) is higher or equal to min-score ({min_score})'
@@ -133,12 +136,11 @@ def main():
         thresholding_results['score-test-passed'] = score_thresholding_passed
 
     # Compare grade to threshold
-    if min_grade!=NO_MIN_GRADE:
+    if min_grade != NO_MIN_GRADE:
         thresholding_results['min-grade'] = min_grade
-        grade = r[RESULT_SCAN_KEY]['grade']
         grade_index = GRADES.index(grade)
         min_grade_index = GRADES.index(min_grade)
-        grade_thresholding_passed = grade_index>=min_grade_index
+        grade_thresholding_passed = grade_index >= min_grade_index
 
         if grade_thresholding_passed:
             grade_thresholding_text = \
@@ -150,8 +152,8 @@ def main():
 
         thresholding_results['grade-test-text'] = grade_thresholding_text
         thresholding_results['grade-test-passed'] = grade_thresholding_passed
-
-    #Integrate the results
+    #
+    # Integrate the results
     if len(thresholding_results):
         thresholding_results['passed'] = thresholding_passed
         r['thresholding-results'] = thresholding_results
@@ -182,7 +184,7 @@ def main():
                                                                   modifier=score[1],
                                                                   reason=score[2]))
 
-    if thresholding_passed==False:
+    if thresholding_passed is False:
         exit(1)
 
 
