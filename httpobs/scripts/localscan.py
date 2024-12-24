@@ -118,12 +118,12 @@ def main():
     thresholding_passed = True
 
     grade = r[RESULT_SCAN_KEY]['grade']
+    score = r[RESULT_SCAN_KEY]['score']
 
     # Compare score to threshold
     if min_score > NO_MIN_SCORE:
         thresholding_results['min-score'] = min_score
 
-        score = r[RESULT_SCAN_KEY]['score']
         score_thresholding_passed = score >= min_score
 
         if score_thresholding_passed:
